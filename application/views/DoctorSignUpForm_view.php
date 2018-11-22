@@ -5,6 +5,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    
 </head>
 <body>
     <h1 style="color:red; padding-bottom: 20px;text-align: center;">Doctor Details</h1>
@@ -56,7 +58,7 @@
 
                 <div class="form-group col-md-12">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="password">
+                <input type="password" name="password" class="form-control" placeholder="password" id="password">
                 </div>
 
                 <div class="form-group col-md-12">
@@ -69,7 +71,67 @@
                 <div class="form-group col-md-12">
                 <button type="submit" class="btn btn-primary">Sign Up</button>
                 </div>
+
+                
+
     </form>
-  
+<!-- .................................... -->
+<script type="text/javascript">
+    var pass = document.getElementByID("password")
+    pass.addEventListener('keyup', function(){checkPassword(pass.value)})
+    
+        
+
+
+    
+function checkPassword(password)
+{
+    var strengthBar = document.getElementByID("strength")
+            var strength=0;
+            if(password.match(/[a-zA-Z0-9][a-zA-Z0-9]+/))
+            {
+                strength += 1
+            }
+            if(password.match(/[~<>?]+/))
+            {
+                strength += 1
+            }
+            if(password.match(/[!@$%^&*]+/))
+            {
+                strength += 1
+            }
+            if(password.length>5)
+            {
+                strength += 1
+            }
+            switch(strength)
+            {
+                case 0:
+                    strengthBar.value=20;
+                    break
+
+                case 1:
+                    strengthBar.value=40;
+                    break
+
+                case 2:
+                    strengthBar.value=60;
+                    break
+
+                case 2:
+                    strengthBar.value=80;
+                    break   
+
+                case 2:
+                    strengthBar.value=100;
+                    break             
+            }
+
+}            
+
+</script>
+<!-- .................................... -->
+    
 </body>
+
 </html>
